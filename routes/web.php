@@ -17,4 +17,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'DiaryController@index')->name('home');
+
+Route::post('/shedule/edit', 'ScheduleController@edit')->name('schedule.edit');
+
+Route::post('/shedule/get', 'SheduleController@get')->name('shedule.get');
+
