@@ -1,20 +1,6 @@
 $(function () {
     var date = getCookie("date");
-    console.log(date);
-    $.ajax({
-        url: '/shedule/get',
-        type: "POST",
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        data: {
-            date: date,
-        },
-        success: function(response){
-            //console.log(data);
-            console.log(response);
-        }
-    });
+    getSchedule(date);
 
 
 
@@ -28,7 +14,7 @@ $(function () {
         // console.log(arr);
         // console.log(date);
         $.ajax({
-            url: '/shedule/edit',
+            url: '/schedule/edit',
             type: "POST",
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -49,5 +35,21 @@ $(function () {
         var value = "; " + document.cookie;
         var parts = value.split("; " + name + "=");
         if (parts.length == 2) return parts.pop().split(";").shift();
+    }
+
+    function getSchedule(date) {
+        $.ajax({
+            url: '/schedule/get',
+            type: "POST",
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: {
+                date: date,
+            },
+            success: function(response){
+                console.log(response);
+            }
+        });
     }
 });

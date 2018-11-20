@@ -11,4 +11,5 @@ class Schedule extends Model
                             'lesson_seq',
                             'lesson_id'
                             ];
+
 }

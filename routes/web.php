@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'DiaryController@index')->name('home');
 
-Route::post('/shedule/edit', 'ScheduleController@edit')->name('schedule.edit');
+Route::post('/schedule/edit', 'ScheduleController@edit')->name('schedule.edit');
 
-Route::post('/shedule/get', 'SheduleController@get')->name('shedule.get');
+Route::post('/schedule/get', 'ScheduleController@get')->name('schedule.get');
 

@@ -23,7 +23,10 @@ class ScheduleController extends Controller
 
     public function get(Request $request)
     {
-         dd($request->all());
+         $date = $request->date;
+
+         $monday = Schedule::where('date', $date)->get();
+         dd($monday);
     }
 
 }
