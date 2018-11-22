@@ -6,10 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Schedule extends Model
 {
-    protected $fillable = [
-                            'date',
-                            'lesson_seq',
-                            'lesson_id'
-                            ];
 
+
+    public function homework()
+    {
+        return $this->hasOne('App\Homework');
+    }
+
+    public function lesson()
+    {
+        return $this->belongsTo('App\Lesson');
+    }
 }

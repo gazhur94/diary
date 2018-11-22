@@ -1,4 +1,4 @@
-<div class="card" style="margin-bottom: 10px">
+<div class="card {{$d}}" style="margin-bottom: 10px">
     <div class="card-header font-weight-bold" style="font-size: 19px; background-color: lightgreen">{{$weekday.' '.$day}}</div>
     <form method="get" >
         @csrf
@@ -24,7 +24,7 @@
                                         <option value="{{$lesson->id}}" name="{{'lesson'.$i}}">{{$lesson->lesson_name}}</option>
                                     @endforeach
                                 </select></td>
-                            <td><input type="text" name="{{'homework'.$i}}"  style="width:  100%"></td>
+                            <td><input type="text" id="{{'homework'.$i}}" name="{{'homework'.$i}}"  style="width:  100%"></td>
                             <td><a href=""><i class="fa fa-star-o" style="font-size:24px"></i></a></td>
                         </tr>
                     @endfor
