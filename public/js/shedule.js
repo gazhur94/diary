@@ -4,9 +4,6 @@ function saveSchedule(day,date) {
         var elem = $("#lesson-select-"+day+"-"+i).val();
         arr.push(elem);
     };
-    console.log(day);
-    console.log(arr);
-    console.log(date);
     $.ajax({
         url: '/schedule/edit',
         type: "POST",
@@ -22,11 +19,31 @@ function saveSchedule(day,date) {
             console.log(response);
         }
     });
-};
+}
+
+function saveHomework(seq, date, day) {
+    console.log(seq,date,day);
+    var homework = $("#homework-"+day+"-"+seq).val();
+    $.ajax({
+        url: '/homework/edit',
+        type: "POST",
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        data: {
+            homework: homework,
+            date: date,
+            seq: seq
+        },
+        success: function(response){
+            console.log(response);
+        }
+    });
+
+}
 
 $(function () {
     var date = getCookie("date");
-
 
 
     getSchedule(date);
@@ -42,12 +59,15 @@ $(function () {
         var days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
         for (var i = 0; i < days.length; i++) {
             var day = days[i];
+            var seq = i+1;
             for (var j = 1; j < 9; j++) {
-                var homeworkInput = $('.' + day + ' #homework' + j);
+                var homeworkInput = $('#homework-'+day+'-'+j);
                 var scheduleInput = $('#lesson-select-'+day+'-'+j);
                 if (day == 'mon' && data.mon[j] != undefined) {
                     scheduleInput.val(data.mon[j].lessonId);
                     homeworkInput.val(data.mon[j].homework);
+                    console.log(data.mon[j].scheduleId);
+                    homeworkInput.data('homework-id', '1');
                 } else if (day == 'tue' && data.tue[j] != undefined) {
                     scheduleInput.val(data.tue[j].lessonId);
                     homeworkInput.val(data.tue[j].homework);

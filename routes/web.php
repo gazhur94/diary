@@ -20,6 +20,7 @@ Auth::routes();
 Route::get('/home', 'DiaryController@index')->name('home');
 
 Route::post('/schedule/edit', 'ScheduleController@edit')->name('schedule.edit');
-
 Route::post('/schedule/get', 'ScheduleController@get')->name('schedule.get');
+
+Route::post('/homework/edit', 'HomeworkController@edit')->name('homework.edit');
 

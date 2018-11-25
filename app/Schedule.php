@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Schedule extends Model
 {
 
+    public $fillable = array('date', 'lesson_seq');
 
     public function homework()
     {
